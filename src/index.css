@@ -3,6 +3,7 @@
   --color-light: #ffe8cc;
   --color-medium: #ffa94d;
   --color-dark: #ff922b;
+  --color-shadow: rgba(135, 206, 235, 0.5); /* sky blue color for shadow */
 }
 
 * {
@@ -23,14 +24,20 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 2rem; /* Added padding to avoid content touching the edges on small screens */
 }
 
 .app {
   min-height: 66vh;
   display: grid;
-  grid-template-columns: 38rem 44rem;
-  column-gap: 4rem;
+  grid-template-columns: 1fr; /* Changed to a single column for small screens */
+  gap: 2rem; /* Changed to gap for better spacing */
   align-items: start;
+  max-width: 100%;
+  box-shadow: 0 4px 8px var(--color-shadow); /* Added sky blue shadow */
+  border-radius: 10px; /* Optional: added border-radius for smoother edges */
+  padding: 2rem; /* Added padding inside the app container */
+  background-color: white; /* Ensure background color is white for visibility */
 }
 
 .button {
@@ -42,6 +49,7 @@ body {
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
+  box-shadow: 0 4px 8px var(--color-shadow); /* Added shadow */
 }
 
 .button:hover {
@@ -61,11 +69,11 @@ body {
   display: grid;
   grid-template-columns: 4.8rem 1fr auto;
   align-items: center;
-  column-gap: 1.6rem;
-
+  gap: 1.6rem;
   padding: 1.2rem;
   border-radius: 7px;
   transition: 0.5s;
+  box-shadow: 0 4px 8px var(--color-shadow); /* Added shadow */
 }
 
 .selected,
@@ -112,19 +120,19 @@ form {
   display: grid;
   align-items: center;
   gap: 1.2rem;
-
   background-color: var(--color-lightest);
   border-radius: 7px;
+  box-shadow: 0 4px 8px var(--color-shadow); /* Added shadow */
+  padding: 2rem; /* Added padding for better appearance */
 }
 
 .form-add-friend {
   grid-template-columns: 1fr 1.5fr;
   margin-bottom: 1.6rem;
-  padding: 1.2rem;
 }
+
 .form-split-bill {
   grid-template-columns: 1fr 12rem;
-  padding: 3.2rem 4rem;
 }
 
 label {
@@ -168,3 +176,9 @@ form h2 {
   margin-bottom: 1.6rem;
 }
 
+@media (min-width: 768px) {
+  .app {
+    grid-template-columns: 38rem 44rem; /* Adjusted for larger screens */
+    column-gap: 4rem;
+  }
+}
